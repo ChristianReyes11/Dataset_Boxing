@@ -32,7 +32,7 @@ def filter_data_by_country(country):
 
 data_load_state = st.text('Loading...')
 data = load_data(500)
-data_load_state.text("(using st.cache)")
+data_load_state.text("")
 
 if st.sidebar.checkbox('Mostrar Peleas'):
     st.subheader('Todas las peleas')
