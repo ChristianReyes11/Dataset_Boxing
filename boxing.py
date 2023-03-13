@@ -26,7 +26,7 @@ def filter_data_by_fighter(fighter):
 
 
 def filter_data_by_country(country):
-    filtered_data_genre = data[data['country'] == country]
+    filtered_data_country = data[data['country'] == country]
     return filtered_data_country
 
 
