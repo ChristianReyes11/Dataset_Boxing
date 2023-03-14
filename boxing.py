@@ -81,6 +81,22 @@ if st.sidebar.checkbox('Peleas perdidas'):
     ax.set_title('Histograma del número de peleas perdidas')
     st.pyplot(fig)
 
+name = data['name']
+stance = data['stance']
+age = data['age']
+draws = data['draws']
+
+fig_perf_work = px.scatter(data,
+                           x=name,
+                           y=friends,
+                           size=fav,
+                           color=draws,
+                           title="Muestra la cantidad de peleas empatadas  ",
+                           labels=dict(age="edad",
+                                       draws="Empates", stance="stance"),
+                           template="plotly_white")
+fig_perf_work.update_layout(plot_bgcolor="rgba(0,0,0,0)")
+st.plotly_chart(fig_perf_work)
 
 # away = st.sidebar.multiselect("Peleas ganadas", sorted(data["wins"].unique()))
 # home = st.sidebar.multiselect(
