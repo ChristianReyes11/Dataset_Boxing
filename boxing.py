@@ -57,3 +57,32 @@ if (btnFilterbyCountry):
     st.write(f"Total Peleas : {count_row}")
 
     st.dataframe(filterbycoun)
+
+wins = data['wins']
+if st.sidebar.checkbox('Peleas ganadas'):
+    st.markdown("Grafica que muestra la frecuencia del total victorias en las peleas siendo0 el numero mas bajo y siendo la frecuencia el numero de peleas")
+    fig, ax = plt.subplots()
+    ax.hist(wins, bins=10, range=(0, 10))
+    ax.set_xlabel('Peleas ganadas')
+    ax.set_ylabel('Frecuencia')
+    ax.set_title('Histograma del número de peleas ganadas')
+    st.pyplot(fig)
+
+
+away = st.sidebar.multiselect("Peleas ganadas", sorted(data["wins"].unique()))
+home = st.sidebar.multiselect(
+    "Peleas perdidas", sorted(data["looses"].unique()))
+
+if st.sidebar.button("Filtrar Peleas"):
+    st.markdown("Se selecciona el numero de Peleas ganadas y Perdidas y muesta los resultados de peleas con ese numero de wins o loses")
+    mask = (data["wins"].isin(home)) & (data["looses"].isin(away))
+    peleas_seleccionadas = data[mask]
+    st.write("Peleas seleccionadas")
+    st.write(Peleas_seleccionadas)
+
+
+columnas = ['wins', 'loses']
+columna_seleccionada = st.sidebar.multiselect(
+    'Selecciona si gano o perdio', columnas)
+wins = data['wins'].sum()
+loses = data['loses'].sum()
