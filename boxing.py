@@ -54,12 +54,12 @@ selected_country = st.sidebar.selectbox(
     "Seleccionar País", data['country'].unique())
 btnFilterbyCountry = st.sidebar.button('Filtrar País ')
 
-# if (btnFilterbyCountry):
-#    filterbycoun = filter_data_by_country(selected_country)
-#    count_row = filterbycoun.shape[0]
-#    st.write(f"Total Peleas : {count_row}")
+if (btnFilterbyCountry):
+    filterbycoun = filter_data_by_country(selected_country)
+    count_row = filterbycoun.shape[0]
+    st.write(f"Total Peleas : {count_row}")
 
-#    st.dataframe(filterbycoun)
+    st.dataframe(filterbycoun)
 
 # wins = data['wins']
 # if st.sidebar.checkbox('Peleas ganadas'):
