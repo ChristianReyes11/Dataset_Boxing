@@ -37,8 +37,8 @@ data_load_state = st.text('Loading...')
 data = load_data(2500)
 data_load_state.text("")
 
-if st.sidebar.checkbox('Mostrar Peleas'):
-    st.subheader('Todas las peleas')
+if st.sidebar.checkbox('Mostrar Peleadores'):
+    st.subheader('Todos los peleadores')
     st.write(data)
 
 namefighter = st.sidebar.text_input('Nombre del peleador :')
