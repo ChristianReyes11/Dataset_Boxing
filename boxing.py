@@ -34,7 +34,7 @@ def filter_data_by_country(country):
 
 
 data_load_state = st.text('Loading...')
-data = load_data(500)
+data = load_data(2500)
 data_load_state.text("")
 
 if st.sidebar.checkbox('Mostrar Peleas'):
