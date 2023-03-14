@@ -7,7 +7,7 @@ import plotly.express as px
 
 
 st.sidebar.image("Logo.png")
-st.title('COMBATES DE BOXEO BY CHRISTIAN REYES')
+st.title('COMBATES DE BOXEO BY CHRISTIAN REYES!!')
 st.text("Christian Eduardo Amaro Reyes - S19004895")
 
 DATE_COLUMN = 'released'
