@@ -88,8 +88,8 @@ draws = data['draws']
 
 fig_perf_work = px.scatter(data,
                            x=name,
-                           y=friends,
-                           size=fav,
+                           y=age,
+                           size=stance,
                            color=draws,
                            title="Muestra la cantidad de peleas empatadas  ",
                            labels=dict(age="edad",
