@@ -99,9 +99,9 @@ st.pyplot(fig)
 
 # <Nueva implementación a probar>
 
-columnas = ['Victorias', 'Derrotas', 'Empates']
+columnas = ['Peleas']
 columna_seleccionada = st.sidebar.multiselect(
-    'Selecciona el tipo de datos de usuario', columnas)
+    'Selecciona Peleas', columnas)
 Victorias = data['wins'].sum()
 Derrotas = data['looses'].sum()
 Empates = data['draws'].sum()
@@ -110,10 +110,10 @@ if columna_seleccionada:
     st.markdown(
         "<h4 style='text-align: center; color: white;'>Muestra el Total de peleas</h4>", unsafe_allow_html=True)
     df = pd.DataFrame({
-        'Peleador': ['Victorias', 'Derrotas', 'Empates'],
+        'Peleas': ['Victorias', 'Derrotas', 'Empates'],
         'Total': [Victorias, Derrotas, Empates]
     })
-    fig = px.bar(df, x='Peleador', y='Total')
+    fig = px.bar(df, x='Peleas', y='Total')
     st.plotly_chart(fig, use_container_width=True)
 
 # follow=data['user_followers']
