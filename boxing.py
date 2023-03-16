@@ -115,3 +115,32 @@ if columna_seleccionada:
     st.plotly_chart(fig, use_container_width=True)
 
 # <Nueva implementación a probar>
+# histograma por Peleadores por rango de edad
+st.subheader("Gráficos")
+st.write("Histograma que muestra la relacion entre la cantidad de Peleadores por rango de edad")
+
+fig = px.histogram(df, x='age', nbins=10)
+fig.update_layout(title='Numero de Peleadores por rango de edad',
+                  xaxis_title='Edad',
+                  yaxis_title='Frecuencia')
+st.plotly_chart(fig)
+
+st.write("\n\nGrafica de barras que muestra cuantas veces a perdido cada Peleador.\n Para el grafico se cargaron los primero 30 registros")
+
+fig2 = px.bar(df[:30], x='looses', y='name', orientation='h', color='looses')
+fig2.update_layout(title='¿Cuantas veces han perdido los peleadores?',
+                   xaxis_title='Derrotas',
+                   yaxis_title='Nombres')
+
+st.plotly_chart(fig2)
+
+datagrafica = load_data(1000)
+
+# st.write("\n\nGrafica de dispersion que muestra la relacion entre las medallas ganadas y el año de nacimiento de los competidores.\n Para el grafico se cargaron los primero 1000 registros")
+# fig3 = px.scatter(datagrafica, x='athlete_year_birth', y='athlete_medals')
+# fig3.update_layout(title='Grafica de Dispersión del Titanic',
+#                   xaxis_title='Año de nacimiento',
+#                   yaxis_title='Medallas')
+# st.plotly_chart(fig3)
+
+# st.sidebar.image("Uv Anverso.png")
