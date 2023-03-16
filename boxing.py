@@ -98,23 +98,6 @@ ax.set_ylabel('Frecuencia')
 ax.set_title('Histograma de Los países de donde son los peleadores')
 st.pyplot(fig)
 
-columnas = ['Peleas']
-columna_seleccionada = st.sidebar.multiselect(
-    'Selecciona Peleas', columnas)
-Victorias = data['wins'].sum()
-Derrotas = data['looses'].sum()
-Empates = data['draws'].sum()
-
-if columna_seleccionada:
-    st.markdown(
-        "<h4 style='text-align: center; color: white;'>Muestra el Total de peleas</h4>", unsafe_allow_html=True)
-    df = pd.DataFrame({
-        'Peleas': ['Victorias', 'Derrotas', 'Empates'],
-        'Total': [Victorias, Derrotas, Empates]
-    })
-    fig = px.bar(df, x='Peleas', y='Total')
-    st.plotly_chart(fig, use_container_width=True)
-
 # <Nueva implementación a probar>
 # histograma por Peleadores por rango de edad
 st.subheader("Gráficos")
