@@ -7,8 +7,12 @@ import plotly.express as px
 
 
 st.sidebar.image("Logo.png")
-st.title('COMBATES DE BOXEO BY CHRISTIAN REYES!!')
-st.text("Christian Eduardo Amaro Reyes - S19004895")
+st.markdown("<h1 style='text-align: center; color: white;'>COMBATES DE BOXEO</h1>",
+            unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: white;'>Christian Eduardo Amaro Reyes</h3>",
+            unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: white;'>S19004895</h3>",
+            unsafe_allow_html=True)
 
 DATE_COLUMN = 'released'
 DATA_URL = ('fighters.csv')
@@ -36,6 +40,7 @@ def filter_data_by_country(country):
 data_load_state = st.text('Loading...')
 data = load_data(2500)
 data_load_state.text("")
+sidebar = st.sidebar
 
 if st.sidebar.checkbox('Mostrar Peleadores'):
     st.subheader('Todos los peleadores')
@@ -81,36 +86,45 @@ if st.sidebar.checkbox('Peleas perdidas'):
     ax.set_title('Histograma del número de peleas perdidas')
     st.pyplot(fig)
 
-# name = data['name']
-# stance = data['stance']
-# age = data['age']
-# draws = data['draws']
+# <Nueva implementación a probar>
 
-# fig_perf_work = px.scatter(data,
-#                           x=name,
-#                           y=age,
-#                           size=stance,
-#                           color=draws,
-#                           title="Muestra la cantidad de peleas empatadas  ",
-#                           labels=dict(age="edad",
-#                                       draws="Empates", stance="stance"),
-#                           template="plotly_white")
+st.markdown("<h4 style='text-align: center; color: white;'>Este Histograma muestra desde que país son los peleadores</h4>", unsafe_allow_html=True)
+country = data['country']
+fig, ax = plt.subplots()
+ax.hist(country, bins=4, range=(0, 3), color="red", ec="black")
+ax.set_xlabel('Ciudades')
+ax.set_ylabel('Frecuencia')
+ax.set_title('Histograma de Los países de donde son los peleadores')
+
+st.pyplot(fig)
+
+# columnas = ['Follow', 'Friends']
+# columna_seleccionada = st.sidebar.multiselect('Selecciona el tipo de datos de usuario', columnas)
+# userfollow = data['user_followers'].sum()
+# userfriends = data['user_friends'].sum()
+
+# if columna_seleccionada:
+#    st.markdown("<h4 style='text-align: center; color: white;'>Muestra el Total de de seguidores y amigos en comun que tienen todos los usuarios</h4>", unsafe_allow_html=True)
+#    df = pd.DataFrame({
+#    'Usuario': ['Follow', 'Friends'],
+#    'Total': [userfollow, userfriends]
+#    })
+#    fig = px.bar(df, x='Usuario', y='Total')
+#    st.plotly_chart(fig, use_container_width=True)
+
+# follow=data['user_followers']
+# friends=data['user_friends']
+# fav=data['user_favourites']
+# dis=data['source']
+
+# fig_perf_work=px.scatter(data,
+#                         x=dis,
+#                         y=friends,
+#                         size=fav,
+#                         color=follow,
+#                         title="Muestra la cantidad de segudiores  ",
+#                         labels=dict(Date="Fecha de Tweet",
+#                                     source="Dispositivo", favo="Fvaoritos"),
+#                         template="plotly_white")
 # fig_perf_work.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 # st.plotly_chart(fig_perf_work)
-
-# away = st.sidebar.multiselect("Peleas ganadas", sorted(data["wins"].unique()))
-# home = st.sidebar.multiselect(
-#    "Peleas perdidas", sorted(data["looses"].unique()))
-
-# if st.sidebar.button("Filtrar Peleas"):
-#    st.markdown("Se selecciona el numero de Peleas ganadas y Perdidas y muesta los resultados de peleas con ese numero de wins o loses")
-#    mask = (data["wins"].isin(home)) & (data["looses"].isin(away))
-#    peleas_seleccionadas = data[mask]
-#    st.write("Peleas seleccionadas")
-#    st.write(Peleas_seleccionadas)
-
-# columnas = ['wins', 'loses']
-# columna_seleccionada = st.sidebar.multiselect(
-#    'Selecciona si gano o perdio', columnas)
-# wins = data['wins'].sum()
-# loses = data['loses'].sum()
