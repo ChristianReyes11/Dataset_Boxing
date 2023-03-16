@@ -116,19 +116,36 @@ if columna_seleccionada:
 
 # <Nueva implementación a probar>
 
-peleador = data['name']
-ganadas = data['wins']
-racha = data['ko_rate']
-edad = data['age']
+# peleador = data['name']
+# ganadas = data['wins']
+# racha = data['ko_rate']
+# edad = data['age']
+
+follow = data['name']
+friends = data['wins']
+fav = data['ko_rate']
+dis = data['age']
 
 fig_perf_work = px.scatter(data,
-                           x=edad,
-                           y=ganadas,
-                           size=racha,
-                           color=peleador,
-                           title="Muestra datos del peleador  ",
+                           x=dis,
+                           y=friends,
+                           size=fav,
+                           color=follow,
+                           title="Muestra la cantidad de segudiores  ",
                            labels=dict(Date="Fecha de Tweet",
-                                       age="Edad", racha="Racha KO"),
+                                       source="Dispositivo", favo="Fvaoritos"),
                            template="plotly_white")
 fig_perf_work.update_layout(plot_bgcolor="rgba(0,0,0,0)")
 st.plotly_chart(fig_perf_work)
+
+# fig_perf_work = px.scatter(data,
+#                           x=edad,
+#                           y=ganadas,
+#                           size=racha,
+#                           color=peleador,
+#                           title="Muestra datos del peleador  ",
+#                           labels=dict(Date="Fecha de Tweet",
+#                                       age="Edad", racha="Racha KO"),
+#                           template="plotly_white")
+# fig_perf_work.update_layout(plot_bgcolor="rgba(0,0,0,0)")
+# st.plotly_chart(fig_perf_work)
