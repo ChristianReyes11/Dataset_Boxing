@@ -16,6 +16,7 @@ st.markdown("<h3 style='text-align: center; color: white;'>S19004895</h3>",
 
 DATE_COLUMN = 'released'
 DATA_URL = ('fighters.csv')
+df = pd.read_csv(DATA_URL)
 
 
 @st.cache
