@@ -97,8 +97,6 @@ ax.set_ylabel('Frecuencia')
 ax.set_title('Histograma de Los países de donde son los peleadores')
 st.pyplot(fig)
 
-# <Nueva implementación a probar>
-
 columnas = ['Peleas']
 columna_seleccionada = st.sidebar.multiselect(
     'Selecciona Peleas', columnas)
@@ -116,19 +114,21 @@ if columna_seleccionada:
     fig = px.bar(df, x='Peleas', y='Total')
     st.plotly_chart(fig, use_container_width=True)
 
-# follow=data['user_followers']
-# friends=data['user_friends']
-# fav=data['user_favourites']
-# dis=data['source']
+# <Nueva implementación a probar>
 
-# fig_perf_work=px.scatter(data,
-#                         x=dis,
-#                         y=friends,
-#                         size=fav,
-#                         color=follow,
-#                         title="Muestra la cantidad de segudiores  ",
-#                         labels=dict(Date="Fecha de Tweet",
-#                                     source="Dispositivo", favo="Fvaoritos"),
-#                         template="plotly_white")
-# fig_perf_work.update_layout(plot_bgcolor="rgba(0,0,0,0)")
-# st.plotly_chart(fig_perf_work)
+peleador = data['name']
+ganadas = data['wins']
+racha = data['ko_rate']
+edad = data['age']
+
+fig_perf_work = px.scatter(data,
+                           x=age,
+                           y=wins,
+                           size=racha,
+                           color=peleador,
+                           title="Muestra datos del peleador  ",
+                           labels=dict(Date="Fecha de Tweet",
+                                       age="Edad", racha="Racha KO"),
+                           template="plotly_white")
+fig_perf_work.update_layout(plot_bgcolor="rgba(0,0,0,0)")
+st.plotly_chart(fig_perf_work)
