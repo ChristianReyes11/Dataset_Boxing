@@ -52,7 +52,7 @@ btnBuscar = st.sidebar.button('Buscar peleador')
 if (btnBuscar):
     data_fighter = filter_data_by_fighter(namefighter.upper())
     count_row = data_fighter.shape[0]
-    st.write(f"Total mostrados : {count_row}")
+    st.write(f"Total de peleadores : {count_row}")
     st.write(data_fighter)
 
 selected_country = st.sidebar.selectbox(
@@ -62,13 +62,14 @@ btnFilterbyCountry = st.sidebar.button('Filtrar País ')
 if (btnFilterbyCountry):
     filterbycoun = filter_data_by_country(selected_country)
     count_row = filterbycoun.shape[0]
-    st.write(f"Total Peleas : {count_row}")
+    st.write(f"Total de Peleadores : {count_row}")
 
     st.dataframe(filterbycoun)
 
 wins = data['wins']
 if st.sidebar.checkbox('Peleas ganadas'):
-    st.markdown("Grafica que muestra la frecuencia del total victorias en las peleas siendo 0 el numero mas bajo y siendo la frecuencia el numero de peleas")
+    st.markdown(
+        "Grafica que muestra la frecuencia del total victorias en las peleas")
     fig, ax = plt.subplots()
     ax.hist(wins, bins=10, range=(0, 10))
     ax.set_xlabel('Peleas ganadas')
@@ -78,15 +79,14 @@ if st.sidebar.checkbox('Peleas ganadas'):
 
 wins = data['looses']
 if st.sidebar.checkbox('Peleas perdidas'):
-    st.markdown("Grafica que muestra la frecuencia del total derrotas en las peleas siendo 0 el numero mas bajo y siendo la frecuencia el numero de peleas")
+    st.markdown(
+        "Grafica que muestra la frecuencia del total derrotas en las peleas")
     fig, ax = plt.subplots()
     ax.hist(wins, bins=10, range=(0, 10))
     ax.set_xlabel('Peleas perdidas')
     ax.set_ylabel('Frecuencia')
     ax.set_title('Histograma del número de peleas perdidas')
     st.pyplot(fig)
-
-# <Nueva implementación a probar>
 
 st.markdown("<h4 style='text-align: center; color: white;'>Este Histograma muestra desde que país son los peleadores</h4>", unsafe_allow_html=True)
 country = data['country']
@@ -95,22 +95,25 @@ ax.hist(country, bins=4, range=(0, 3), color="red", ec="black")
 ax.set_xlabel('Ciudades')
 ax.set_ylabel('Frecuencia')
 ax.set_title('Histograma de Los países de donde son los peleadores')
-
 st.pyplot(fig)
 
-# columnas = ['Follow', 'Friends']
-# columna_seleccionada = st.sidebar.multiselect('Selecciona el tipo de datos de usuario', columnas)
-# userfollow = data['user_followers'].sum()
-# userfriends = data['user_friends'].sum()
+# <Nueva implementación a probar>
 
-# if columna_seleccionada:
-#    st.markdown("<h4 style='text-align: center; color: white;'>Muestra el Total de de seguidores y amigos en comun que tienen todos los usuarios</h4>", unsafe_allow_html=True)
-#    df = pd.DataFrame({
-#    'Usuario': ['Follow', 'Friends'],
-#    'Total': [userfollow, userfriends]
-#    })
-#    fig = px.bar(df, x='Usuario', y='Total')
-#    st.plotly_chart(fig, use_container_width=True)
+columnas = ['Peleador', 'Racha KO']
+columna_seleccionada = st.sidebar.multiselect(
+    'Selecciona el tipo de datos de usuario', columnas)
+Peleador = data['name'].sum()
+Rachas = data['ko_rate'].sum()
+
+if columna_seleccionada:
+    st.markdown(
+        "<h4 style='text-align: center; color: white;'>Muestra el Total de peleas de los peleadores</h4>", unsafe_allow_html=True)
+    df = pd.DataFrame({
+        'Peleador': ['Peleador', 'Racha KO'],
+        'Total': [Peleador, Rachas]
+    })
+    fig = px.bar(df, x='Peleador', y='Total')
+    st.plotly_chart(fig, use_container_width=True)
 
 # follow=data['user_followers']
 # friends=data['user_friends']
