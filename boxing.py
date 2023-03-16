@@ -122,8 +122,8 @@ racha = data['ko_rate']
 edad = data['age']
 
 fig_perf_work = px.scatter(data,
-                           x=age,
-                           y=wins,
+                           x=edad,
+                           y=ganadas,
                            size=racha,
                            color=peleador,
                            title="Muestra datos del peleador  ",
