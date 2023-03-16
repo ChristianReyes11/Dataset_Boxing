@@ -132,7 +132,6 @@ fig2 = px.bar(df[:30], x='looses', y='name', orientation='h', color='looses')
 fig2.update_layout(title='¿Cuantas veces han perdido los peleadores?',
                    xaxis_title='Derrotas',
                    yaxis_title='Nombres')
-
 st.plotly_chart(fig2)
 
 datagrafica = load_data(1000)
@@ -143,5 +142,3 @@ fig3.update_layout(title='Grafica de Dispersión del Titanic',
                    xaxis_title='Edad',
                    yaxis_title='Victorias')
 st.plotly_chart(fig3)
-
-# st.sidebar.image("Uv Anverso.png")
