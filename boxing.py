@@ -27,10 +27,10 @@ def load_data(nrows):
     return data
 
 
-def filter_data_by_fighter(fighter):
-    filtered_data_fighter = data[data['name'].str.upper(
-    ).str.contains(fighter)]
-    return filtered_data_fighter
+def filter_data_by_age(age):
+    filtered_data_age = data[data['age'].str.upper(
+    ).str.contains(age)]
+    return filtered_data_age
 
 
 def filter_data_by_country(country):
@@ -47,14 +47,14 @@ if st.sidebar.checkbox('Mostrar Peleadores'):
     st.subheader('Todos los peleadores')
     st.write(data)
 
-namefighter = st.sidebar.text_input('Nombre del peleador :')
+agefighter = st.sidebar.text_input('Edad del peleador :')
 btnBuscar = st.sidebar.button('Buscar peleador')
 
 if (btnBuscar):
-    data_fighter = filter_data_by_fighter(namefighter.upper())
-    count_row = data_fighter.shape[0]
+    data_age = filter_data_by_age(agefighter.upper())
+    count_row = data_age.shape[0]
     st.write(f"Total de peleadores : {count_row}")
-    st.write(data_fighter)
+    st.write(data_age)
 
 selected_country = st.sidebar.selectbox(
     "Seleccionar País", data['country'].unique())
