@@ -137,11 +137,11 @@ st.plotly_chart(fig2)
 
 datagrafica = load_data(1000)
 
-# st.write("\n\nGrafica de dispersion que muestra la relacion entre las medallas ganadas y el año de nacimiento de los competidores.\n Para el grafico se cargaron los primero 1000 registros")
-# fig3 = px.scatter(datagrafica, x='athlete_year_birth', y='athlete_medals')
-# fig3.update_layout(title='Grafica de Dispersión del Titanic',
-#                   xaxis_title='Año de nacimiento',
-#                   yaxis_title='Medallas')
-# st.plotly_chart(fig3)
+st.write("\n\nGrafica de dispersion que muestra la relacion entre las Peleas ganadas y la edad de los peleadores.\n Para el grafico se cargaron los primero 1000 registros")
+fig3 = px.scatter(datagrafica, x='age', y='wins')
+fig3.update_layout(title='Grafica de Dispersión del Titanic',
+                   xaxis_title='Edad',
+                   yaxis_title='Victorias')
+st.plotly_chart(fig3)
 
 # st.sidebar.image("Uv Anverso.png")
